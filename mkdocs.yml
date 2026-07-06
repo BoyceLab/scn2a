@@ -1,0 +1,89 @@
+site_name: Rare Disease Research Portfolio Map
+site_description: A methodology and entity-relationship schema for mapping the full research portfolio of a rare disease patient advocacy organization.
+site_author: Research Portfolio Mapping Framework
+copyright: Open framework for rare disease research portfolio mapping.
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: deep orange
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - toc.follow
+    - content.code.copy
+    - content.tabs.link
+    - search.suggest
+    - search.highlight
+  icon:
+    logo: material/graph-outline
+    repo: fontawesome/brands/github
+  font:
+    text: Inter
+    code: JetBrains Mono
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/feeds.js
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - def_list
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.snippets:
+      base_path: [docs]
+
+plugins:
+  - search
+
+nav:
+  - Overview: index.md
+  - Methodology: methodology.md
+  - Entity-Relationship Schema:
+      - schema/index.md
+      - Node types: schema/node-types.md
+      - Edge types: schema/edge-types.md
+      - Machine-readable schema: schema/machine-readable.md
+  - Identifier and Standards Registry: identifiers.md
+  - Data Harmonization Layer: data-harmonization.md
+  - Patient Overlap Layer: patient-overlap.md
+  - Dataset Catalog and Discovery: dataset-catalog.md
+  - Implementation: implementation.md
+  - Turnkey Ecosystem: ecosystem.md
+  - SCN2A Example:
+      - sample-scn2a.md
+      - Key informatics: scn2a-informatics.md
+      - Census to schema mapping: census-mapping.md
+      - Live feeds: live-feeds.md
