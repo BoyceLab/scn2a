@@ -2,7 +2,7 @@
 
 A methodology and reusable entity-relationship schema that lets a rare disease patient advocacy organization map its entire research footprint: every study, dataset, publication, presentation, researcher, funder, cohort, and the participant overlap between studies, as a single connected graph.
 
-## The problem this solves
+## The problem this solves.
 
 A gene-level foundation (for example a KCNT1 or SCN2A community) typically accumulates research across many independent efforts: academic collaborators, natural history studies, a patient registry, a biobank, genomic datasets, clinical scales, conference posters, and journal articles. That footprint is usually scattered across spreadsheets, inboxes, and individual investigators' heads. Three questions are hard to answer as a result:
 
