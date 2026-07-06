@@ -1,4 +1,4 @@
-# Rare Disease Research Portfolio Map.
+# Rare Disease Research Portfolio Map
 
 A methodology and reusable entity-relationship schema for mapping the complete research portfolio of a rare disease patient advocacy organization: studies, datasets, publications, presentations, researchers, funders, cohorts, data types, and privacy-preserving participant overlap, as a single connected graph.
 
