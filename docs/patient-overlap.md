@@ -10,9 +10,9 @@ Give each participant a key that is stable across studies but carries no identif
 
 **Privacy-preserving record linkage.** PPRL uses Bloom filter or cryptographic hashing so that two sites can determine whether they share a participant without either revealing its records. This is the model used by large research networks and public health systems.
 
-**Tokenization.** Commercial services (for example Datavant) issue de-identified tokens that serve the same overlap-detection purpose across data holders.
+**Tokenization.** Commercial services (for example [Datavant](https://www.datavant.com/)) issue de-identified tokens that serve the same overlap-detection purpose across data holders.
 
-For genotype and phenotype level matching, rather than identity matching, the relevant protocols are GA4GH Matchmaker Exchange and Beacon.
+For genotype and phenotype level matching, rather than identity matching, the relevant protocols are [GA4GH Matchmaker Exchange](https://www.matchmakerexchange.org/) and [Beacon](https://beacon-project.io/).
 
 ## A federated architecture
 
@@ -29,7 +29,7 @@ No raw identifiers ever leave a study, and the central registry never holds anyt
 
 Even overlap detection touches consented human data, so this layer is wrapped in governance:
 
-- Every dataset and cohort carries a `DataUsePermission` node expressed with the GA4GH Data Use Ontology, stating what the data may be used for.
+- Every dataset and cohort carries a `DataUsePermission` node expressed with the [GA4GH Data Use Ontology](https://www.ga4gh.org/product/data-use-ontology-duo/), stating what the data may be used for.
 - A data access committee reviews and records access decisions as `accesses` edges, qualified by whether the relevant permission was satisfied.
 - The participant privacy boundary is absolute: the `Participant` node holds only the opaque key, and identity resolution lives entirely in the linkage service, outside the portfolio graph.
 

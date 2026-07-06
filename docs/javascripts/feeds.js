@@ -141,6 +141,78 @@ async function loadNews(node) {
   node.appendChild(live);
 }
 
+async function loadFulltext(node) {
+  statusMsg(node, "Loading articles from Europe PMC...");
+  try {
+    const q = encodeURIComponent(GENE);
+    const url = `https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=${q}&format=json&pageSize=15&sort=${encodeURIComponent("P_PDATE_D desc")}`;
+    const r = await fetch(url);
+    const results = ((await r.json()).resultList || {}).result || [];
+    if (!results.length) { statusMsg(node, "No articles returned."); return; }
+    node.innerHTML = "";
+    results.forEach(p => {
+      const item = el("div", "feed-item");
+      const page = `https://europepmc.org/article/${p.source}/${p.id}`;
+      const a = el("a", "feed-title", esc(p.title));
+      a.href = p.doi ? `https://doi.org/${p.doi}` : page;
+      a.target = "_blank"; a.rel = "noopener";
+      item.appendChild(a);
+      const meta = [p.source, p.pubYear, p.authorString].filter(Boolean).join("  \u00b7  ");
+      item.appendChild(el("div", "feed-meta", esc(meta)));
+      // surface citing articles and grant links via the Europe PMC article page
+      const links = el("div", "feed-meta");
+      const page2 = `https://europepmc.org/article/${p.source}/${p.id}`;
+      const cited = el("a", null, "cited by " + (p.citedByCount || 0) + " on Europe PMC");
+      cited.href = page2; cited.target = "_blank"; cited.rel = "noopener";
+      links.appendChild(cited);
+      item.appendChild(links);
+      node.appendChild(item);
+    });
+  } catch (e) {
+    statusMsg(node, "Live Europe PMC request failed. ");
+    const a = el("a", null, "Open article search on Europe PMC");
+    a.href = `https://europepmc.org/search?query=${encodeURIComponent(GENE)}`;
+    a.target = "_blank"; a.rel = "noopener";
+    node.appendChild(a);
+  }
+}
+
+async function loadGrants(node) {
+  statusMsg(node, "Loading NIH grants...");
+  try {
+    const r = await fetch("data/scn2a_grants.json", { cache: "no-store" });
+    const data = await r.json();
+    const grants = data.grants || [];
+    if (!grants.length) {
+      statusMsg(node, "No grants yet. The grant list populates at build time from NIH RePORTER.");
+    } else {
+      node.innerHTML = "";
+      node.appendChild(el("p", "feed-status",
+        `${data.distinct_core_projects} projects`
+        + (data.generated ? "  \u00b7  updated " + esc(data.generated) : "")));
+      grants.forEach(g => {
+        const item = el("div", "feed-item");
+        const a = el("a", "feed-title", esc(g.title || g.project_num));
+        a.href = g.url || `https://reporter.nih.gov/search/${encodeURIComponent(GENE)}/projects`;
+        a.target = "_blank"; a.rel = "noopener";
+        item.appendChild(a);
+        const amt = g.award_amount ? "$" + Number(g.award_amount).toLocaleString() : "";
+        const meta = [g.pi, g.org, g.agency_ic, g.fiscal_year, amt].filter(Boolean).join("  \u00b7  ");
+        item.appendChild(el("div", "feed-meta", esc(meta)));
+        node.appendChild(item);
+      });
+    }
+  } catch (e) {
+    statusMsg(node, "Grant file not available yet.");
+  }
+  const live = el("p", "feed-live-link");
+  const a = el("a", null, "Open a live NIH RePORTER search for " + GENE);
+  a.href = `https://reporter.nih.gov/search/${encodeURIComponent(GENE)}/projects`;
+  a.target = "_blank"; a.rel = "noopener";
+  live.appendChild(a);
+  node.appendChild(live);
+}
+
 async function loadResearchers(node) {
   statusMsg(node, "Loading researchers...");
   try {
@@ -177,7 +249,9 @@ function initFeeds() {
   const map = {
     "feed-pubmed": loadPubMed,
     "feed-preprints": loadPreprints,
+    "feed-fulltext": loadFulltext,
     "feed-trials": loadTrials,
+    "feed-grants": loadGrants,
     "feed-news": loadNews,
     "feed-researchers": loadResearchers,
   };

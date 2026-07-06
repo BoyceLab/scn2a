@@ -28,7 +28,7 @@ Model everything as a graph of typed nodes and typed edges, governed by the FAIR
 
 ## How to read this site
 
-The [Methodology](methodology.md) page walks the layers in order. The [Entity-Relationship Schema](schema/index.md) section is the heart of the framework: the node types, the edge types, and a downloadable machine-readable schema. The remaining pages go deep on identifiers, harmonization, overlap, cataloging, implementation, and the existing turnkey infrastructure a small foundation can join rather than build.
+The [Methodology](methodology.md) page walks the layers in order. The [Entity-Relationship Schema](schema/index.md) section is the heart of the framework: the node types, the edge types, and a downloadable machine-readable schema. The remaining pages go deep on identifiers, harmonization, overlap, cataloging, implementation, and the existing turnkey infrastructure a small foundation can join rather than build. Every standard and data source named across the site is collected, with links, on the [References](references.md) page.
 
 !!! note "Status"
     This is a working framework scaffold. The schema is complete and ready to instantiate. The implementation pages describe build options at three levels of effort so a foundation can start with a lightweight inventory and grow into a full knowledge graph.

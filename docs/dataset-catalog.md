@@ -4,13 +4,13 @@ Each dataset needs a machine-readable, web-discoverable description so that coll
 
 ## The standards
 
-**DCAT.** The W3C Data Catalog Vocabulary is the backbone for describing datasets, their distributions, and the catalog that holds them. It is the interoperable structure most research data catalogs speak.
+**DCAT.** The [W3C Data Catalog Vocabulary](https://www.w3.org/TR/vocab-dcat-3/) is the backbone for describing datasets, their distributions, and the catalog that holds them. It is the interoperable structure most research data catalogs speak.
 
-**Bioschemas Dataset.** A life-science profile of schema.org that makes dataset descriptions discoverable by general and specialized search engines when embedded in a web page.
+**Bioschemas Dataset.** A [life-science profile](https://bioschemas.org/) of schema.org that makes dataset descriptions discoverable by general and specialized search engines when embedded in a web page.
 
-**RO-Crate.** A lightweight way to package a dataset together with its metadata and provenance into a single portable object, useful when a dataset moves between systems or is deposited in a repository.
+**RO-Crate.** A [lightweight way](https://www.researchobject.org/ro-crate/) to package a dataset together with its metadata and provenance into a single portable object, useful when a dataset moves between systems or is deposited in a repository.
 
-**HL7 FHIR ResearchStudy and ResearchSubject.** When the portfolio needs to interoperate with clinical systems, these resources model the study and its enrollment in a standard clinical exchange format.
+**HL7 FHIR ResearchStudy and ResearchSubject.** When the portfolio needs to interoperate with clinical systems, [these resources](https://www.hl7.org/fhir/researchstudy.html) model the study and its enrollment in a standard clinical exchange format.
 
 ## What a catalog entry records
 

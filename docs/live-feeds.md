@@ -3,7 +3,7 @@
 This page pulls current SCN2A activity from public sources. Publications, preprints, and trials are queried live in your browser each time the page loads, so they are always current. News is refreshed on a schedule at build time.
 
 !!! info "How the feeds work"
-    PubMed, Europe PMC, and ClinicalTrials.gov all allow direct browser requests, so those three panels are genuinely live and require no server. The news panel reads a small file that a scheduled GitHub Action regenerates from a Google News query, which avoids the browser restrictions that block fetching news directly. Every panel falls back to a direct search link if a live request does not complete.
+    PubMed, Europe PMC, and ClinicalTrials.gov allow direct browser requests, so those panels are genuinely live and require no server. The Europe PMC full text panel surfaces articles across all sources, including full text matches, with a cited-by count and a link to the Europe PMC article page where citing articles and grant links live. The NIH RePORTER grants panel and the news panel are refreshed on a schedule at build time, because those services are better queried server side. Every panel falls back to a direct search link if a live request does not complete.
 
 <div class="feed-grid" markdown="0">
   <div class="feed-panel">
@@ -11,8 +11,16 @@ This page pulls current SCN2A activity from public sources. Publications, prepri
     <div class="feed-body" id="feed-pubmed"></div>
   </div>
   <div class="feed-panel">
+    <h3>Full text and citations (Europe PMC)</h3>
+    <div class="feed-body" id="feed-fulltext"></div>
+  </div>
+  <div class="feed-panel">
     <h3>Preprints (Europe PMC)</h3>
     <div class="feed-body" id="feed-preprints"></div>
+  </div>
+  <div class="feed-panel">
+    <h3>Federal grants (NIH RePORTER)</h3>
+    <div class="feed-body" id="feed-grants"></div>
   </div>
   <div class="feed-panel">
     <h3>Clinical trials (ClinicalTrials.gov)</h3>
@@ -24,13 +32,18 @@ This page pulls current SCN2A activity from public sources. Publications, prepri
   </div>
 </div>
 
-## Adding more sources
+## Sources behind these feeds
 
-The same client-side pattern extends to any source that permits browser requests. Natural additions for a gene community:
+Each panel is a direct query against a public source. Follow any of them to search yourself:
 
-- **NIH RePORTER** for federally funded grants mentioning the gene, through its public project API.
-- **Europe PMC full text** searches, already used here for preprints, can also surface citing articles and grant links.
-- **OpenAlex** for a broader works graph, including authors and institutions, which can feed the Person and Organization nodes of the portfolio directly.
+- Publications: [PubMed](https://pubmed.ncbi.nlm.nih.gov/) via the [NCBI E-utilities](https://www.ncbi.nlm.nih.gov/books/NBK25501/) API.
+- Full text, citations, and preprints: [Europe PMC](https://europepmc.org/) via its [REST API](https://europepmc.org/RestfulWebService).
+- Federal grants: [NIH RePORTER](https://reporter.nih.gov/) via its [public project API](https://api.reporter.nih.gov/).
+- Clinical trials: [ClinicalTrials.gov](https://clinicaltrials.gov/) via its [API v2](https://clinicaltrials.gov/data-api/api).
+- News: a [Google News](https://news.google.com/) query fetched at build time.
+- Researcher harvesting draws on [OpenAlex](https://openalex.org/). See the [Researchers](researchers.md) page.
+
+For the full list of standards and data sources used across this site, see the [References](references.md) page.
 
 ## Feeding the portfolio graph
 

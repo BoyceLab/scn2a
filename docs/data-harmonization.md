@@ -4,13 +4,13 @@ Mapping which data types exist is only half the value. To pool or compare result
 
 ## The standards
 
-**NINDS Common Data Elements.** The National Institute of Neurological Disorders and Stroke maintains standardized data elements for neurological research, including a dedicated Epilepsy set. For developmental and epileptic encephalopathy genes, this set is directly applicable and gives an off-the-shelf vocabulary for seizure semiology, EEG findings, development, and outcomes.
+**NINDS Common Data Elements.** The National Institute of Neurological Disorders and Stroke maintains [standardized data elements](https://www.commondataelements.ninds.nih.gov/) for neurological research, including a dedicated [Epilepsy set](https://www.commondataelements.ninds.nih.gov/Epilepsy). For developmental and epileptic encephalopathy genes, this set is directly applicable and gives an off-the-shelf vocabulary for seizure semiology, EEG findings, development, and outcomes.
 
-**OMOP Common Data Model.** For tabular clinical and observational data, OMOP provides a mature target model and standardized vocabularies. Harmonizing each study's clinical tables to OMOP makes them queryable with a shared analytic layer and comparable across studies.
+**OMOP Common Data Model.** For tabular clinical and observational data, [OMOP](https://ohdsi.github.io/CommonDataModel/) provides a mature target model and standardized vocabularies. Harmonizing each study's clinical tables to OMOP makes them queryable with a shared analytic layer and comparable across studies.
 
-**GA4GH Phenopackets and HPO.** For deep phenotyping, Phenopackets version 2 packages a participant's phenotype, using Human Phenotype Ontology terms, alongside genomic findings in a portable, standard structure. This is the natural interoperability format for a gene-level community.
+**GA4GH Phenopackets and HPO.** For deep phenotyping, [Phenopackets](https://www.ga4gh.org/product/phenopackets/) version 2 packages a participant's phenotype, using [Human Phenotype Ontology](https://hpo.jax.org/) terms, alongside genomic findings in a portable, standard structure. This is the natural interoperability format for a gene-level community.
 
-**ISO 11179 metadata registry.** The variable-level dictionary itself (every field in every study, with its definition and permitted values) is held in a metadata registry following the ISO 11179 pattern, so that the mapping between a raw variable and its controlled concept is documented and auditable.
+**ISO 11179 metadata registry.** The variable-level dictionary itself (every field in every study, with its definition and permitted values) is held in a metadata registry following the [ISO 11179](https://www.iso.org/search.html?q=11179) pattern, so that the mapping between a raw variable and its controlled concept is documented and auditable.
 
 ## How it appears in the schema
 

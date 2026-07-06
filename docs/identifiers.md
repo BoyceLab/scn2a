@@ -21,10 +21,10 @@ Persistent identifiers are the mechanism that lets the portfolio graph populate 
 
 Most of the graph can be built without manual data entry:
 
-1. **Seed with ORCID.** Collect the ORCID of every collaborating researcher. ORCID records carry their publications, affiliations, and grants.
-2. **Expand through Crossref and DataCite.** Each publication and dataset DOI resolves to structured metadata, including authors (as ORCIDs), funders, and, increasingly, data citations.
-3. **Resolve organizations with ROR.** Affiliation strings map to ROR identifiers, collapsing duplicate institution nodes.
-4. **Register activities with RAiD.** Minting a RAiD for each study gives the portfolio a stable spine that the other identifiers hang from.
+1. **Seed with ORCID.** Collect the [ORCID](https://orcid.org/) of every collaborating researcher. ORCID records carry their publications, affiliations, and grants.
+2. **Expand through Crossref and DataCite.** Each publication and dataset DOI resolves to structured metadata through [Crossref](https://www.crossref.org/) and [DataCite](https://datacite.org/), including authors (as ORCIDs), funders, and, increasingly, data citations.
+3. **Resolve organizations with ROR.** Affiliation strings map to [ROR](https://ror.org/) identifiers, collapsing duplicate institution nodes.
+4. **Register activities with RAiD.** Minting a [RAiD](https://raid.org/) for each study gives the portfolio a stable spine that the other identifiers hang from.
 
 What remains for manual curation is small: the cohort, data type, biospecimen, and governance nodes, plus the participant overlap keys, which by design never come from public sources.
 
