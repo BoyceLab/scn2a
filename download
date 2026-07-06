@@ -6,7 +6,7 @@ Each dataset needs a machine-readable, web-discoverable description so that coll
 
 **DCAT.** The W3C Data Catalog Vocabulary is the backbone for describing datasets, their distributions, and the catalog that holds them. It is the interoperable structure most research data catalogs speak.
 
-**Bioschemas Dataset.** A life-science profile of schema.org that makes dataset descriptions discoverable by general and specialized search engines when embedded in a web page.
+**Bioschemas Dataset.** A life-science profile of schema.org that makes dataset descriptions discoverable by general and specialized search engines when embedded in a web page..
 
 **RO-Crate.** A lightweight way to package a dataset together with its metadata and provenance into a single portable object, useful when a dataset moves between systems or is deposited in a repository.
 
