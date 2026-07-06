@@ -1,0 +1,54 @@
+name: Deploy site to GitHub Pages
+
+on:
+  push:
+    branches: [main, master]
+  schedule:
+    - cron: "0 */12 * * *"   # refresh news twice a day
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Refresh SCN2A news feed
+        run: python scripts/fetch_news.py
+        continue-on-error: true
+      - name: Harvest SCN2A researcher ORCIDs
+        run: python scripts/harvest_orcids.py
+        continue-on-error: true
+      - name: Harvest SCN2A federal grants
+        run: python scripts/fetch_grants.py
+        continue-on-error: true
+      - run: mkdocs build --strict
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
