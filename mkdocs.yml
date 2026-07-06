@@ -86,5 +86,6 @@ nav:
   - SCN2A Example:
       - sample-scn2a.md
       - Key informatics: scn2a-informatics.md
+      - Researchers: researchers.md
       - Census to schema mapping: census-mapping.md
       - Live feeds: live-feeds.md

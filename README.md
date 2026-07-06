@@ -2,7 +2,7 @@
 
 A methodology and reusable entity-relationship schema for mapping the complete research portfolio of a rare disease patient advocacy organization: studies, datasets, publications, presentations, researchers, funders, cohorts, data types, and privacy-preserving participant overlap, as a single connected graph.
 
-This repository is an MkDocs Material site that documents the framework and doubles as a template a foundation can fork to publish its own portfolio map..
+This repository is an MkDocs Material site that documents the framework and doubles as a template a foundation can fork to publish its own portfolio map.
 
 ## What is here
 

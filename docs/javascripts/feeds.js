@@ -141,12 +141,45 @@ async function loadNews(node) {
   node.appendChild(live);
 }
 
+async function loadResearchers(node) {
+  statusMsg(node, "Loading researchers...");
+  try {
+    const r = await fetch("data/scn2a_researchers.json", { cache: "no-store" });
+    const data = await r.json();
+    const people = data.researchers || [];
+    if (!people.length) {
+      statusMsg(node, "No researchers yet. The list populates at build time from OpenAlex.");
+      return;
+    }
+    node.innerHTML = "";
+    const head = el("p", "feed-status",
+      `${data.researchers_with_orcid} researchers with ORCID from ${data.total_works_scanned} works`
+      + (data.generated ? "  \u00b7  updated " + esc(data.generated) : ""));
+    node.appendChild(head);
+    people.forEach(p => {
+      const item = el("div", "feed-item");
+      const a = el("a", "feed-title", esc(p.name || p.orcid));
+      a.href = p.orcid_url; a.target = "_blank"; a.rel = "noopener";
+      item.appendChild(a);
+      const bits = [];
+      bits.push(p.works_count + (p.works_count === 1 ? " work" : " works"));
+      if (p.institutions && p.institutions.length) bits.push(p.institutions[0]);
+      if (p.orcid) bits.push(p.orcid);
+      item.appendChild(el("div", "feed-meta", esc(bits.join("  \u00b7  "))));
+      node.appendChild(item);
+    });
+  } catch (e) {
+    statusMsg(node, "Researcher list not available yet.");
+  }
+}
+
 function initFeeds() {
   const map = {
     "feed-pubmed": loadPubMed,
     "feed-preprints": loadPreprints,
     "feed-trials": loadTrials,
     "feed-news": loadNews,
+    "feed-researchers": loadResearchers,
   };
   Object.keys(map).forEach(id => {
     const node = document.getElementById(id);
